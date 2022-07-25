@@ -1,0 +1,36 @@
+--Create new table for art store
+
+CREATE TABLE art_store
+(id integer primary key, 
+name text, 
+quantity integer,
+ailse integer,
+price integer);
+
+--Insert records (rows) into art_store table
+INSERT INTO art_store
+VALUES
+(1, "markers", 10, 1, 10),
+(2, "colored pencils", 24, 2, 20),
+(3, "sketch notebook", 40, 2, 50),
+(4, "paint brushes", 500, 1, 40),
+(5, "erasers", 250, 1, 5),
+(6, "water colors", 20, 1, 30),
+(7, "pencils", 400, 1, 10),
+(8, "canvas", 50, 2, 25),
+(9, "easels", 20, 2, 40),
+(10, "acrylic paint", 100, 15, 2),
+(11, "art kit", 12, 30, 2),
+(12, "tote bag", 30, 15, 3),
+(13, "charcoal", 35, 5, 3),
+(14, "aprons", 20, 20, 3),
+(15, "stencils", 100, 2, 3);
+
+--Display the table ordered by price
+Select * FROM art_store ORDER BY price;
+
+--What is the total quantity of all the items?
+SELECT SUM (quantity) FROM art_store
+
+--What is the average price of the items?
+SELECT AVG(price) FROM art_store
