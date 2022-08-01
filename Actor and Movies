@@ -1,0 +1,53 @@
+/* Create a table of actors */
+CREATE TABLE actors (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT, last_name TEXT);
+
+INSERT INTO actors (first_name, last_name) VALUES ("Rachel", "McAdams");
+INSERT INTO actors (first_name, last_name) VALUES ("Marissa", "McCarthy");
+INSERT INTO actors (first_name, last_name) VALUES ("Ryan", "Reynolds") ;
+INSERT INTO actors (first_name, last_name) VALUES("Dwayne", "Johnson");
+INSERT INTO actors (first_name, last_name) VALUES ("Vince", "Vaughn");
+INSERT INTO actors (first_name, last_name) VALUES ("Jennifer", "Aniston");
+INSERT INTO actors (first_name, last_name) VALUES ("Blake", "Lively");
+
+/* Create a table of movies and the famous people that are in them*/
+CREATE TABLE movies (id INTEGER PRIMARY KEY, title TEXT, actor_id INTEGER);
+
+INSERT INTO movies VALUES
+(1,"Deadpool", 3),
+(2, "Free Guy", 3),
+(3, "Red Notice", 3),
+(4, "The Notebook", 1),
+(5, "Mean Girls", 1),
+(6, "About Time", 1),
+(7, "Bridesmaids", 2),
+(8, "Identity Thief", 2),
+(9, "Red Notice", 4),
+(10, "Jungle Cruise", 4),
+(11, "Moana", 4),
+(12, "Bruce Almighty", 6),
+(13, "We're The Millers", 6),
+(14, "The Break-up", 5),
+(15, "The Break-up", 6),
+(16, "The Internship", 5),
+(17, "DodgeBall", 5);
+
+/*Create a table of famous people's spouses*/
+CREATE TABLE actorspouses (id INTEGER PRIMARY KEY AUTOINCREMENT, spouse_fn TEXT, spouse_ln TEXT, actor_id INTEGER);
+
+INSERT INTO actorspouses (spouse_fn, spouse_ln, actor_id) VALUES
+("Ryan", "Reynolds", 7),
+("Blake", "Lively", 3),
+("Lauren", "Hashian", 4),
+("Kyla", "Weber", 5);
+
+/*What movies are listed for all the actors in the database?*/
+SELECT actors.first_name, actors.last_name, movies.title
+FROM actors
+LEFT OUTER JOIN movies
+ON actors.id = movies.actor_id;
+
+/*What are the names of the spouses of the famous people in our database?*/
+SELECT actors.first_name, actors.last_name, actorspouses.spouse_fn, actorspouses.spouse_ln 
+FROM actors
+OUTER LEFT JOIN actorspouses
+ON actors.id = actorspouses.actor_id;
